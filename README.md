@@ -14,10 +14,24 @@
 
 ---
 
+## 新しい技術を追加するとき
+
+```bash
+./scripts/new-topic.sh <技術名>
+
+# 例
+./scripts/new-topic.sh react
+```
+
+`<技術名>/`（実装置き場）と `docs/<技術名>/README.md`（メモテンプレート）が同時に作られる。
+
+---
+
 ## フォルダ構成
 
 ```
 learning-lab/
+├── scripts/         # 管理スクリプト
 ├── laravel/         # Laravel学習（SES研修）
 ├── java/            # Java学習
 ├── playwright/      # Playwright実験・検証
