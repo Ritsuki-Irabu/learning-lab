@@ -43,7 +43,7 @@
 ./scripts/new-topic.sh react
 ```
 
-`<技術名>/`（実装置き場）と `docs/<技術名>/README.md`（標準フォーマットのテンプレート）が同時に作られる。
+`docs/<技術名>/README.md`（標準フォーマットのテンプレート）が作られる。
 
 ---
 
@@ -72,14 +72,14 @@ learning-lab/
 ├── .claude/
 │   └── skills/
 │       └── learning-lab/  # /learning-lab スキル
+├── docs/                  # 技術別ドキュメント・チートシート
+│   ├── java/
+│   ├── laravel/
+│   ├── nextjs/
+│   └── playwright/
 ├── scripts/               # 管理スクリプト
-├── laravel/               # Laravel学習（SES研修）
-├── java/                  # Java学習
-├── playwright/            # Playwright実験・検証
-└── docs/                  # 技術別メモ・チートシート
-    ├── laravel/
-    ├── java/
-    └── playwright/
+├── CLAUDE.md
+└── README.md
 ```
 
 ---
