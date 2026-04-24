@@ -1,5 +1,5 @@
 #!/bin/bash
-# 新しい技術トピックのフォルダを作成する
+# 新しい技術トピックのドキュメントフォルダを作成する
 # 使い方: ./scripts/new-topic.sh <技術名>
 # 例:     ./scripts/new-topic.sh react
 
@@ -14,17 +14,12 @@ if [ -z "$TOPIC" ]; then
 fi
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-TOPIC_DIR="$REPO_ROOT/$TOPIC"
 DOCS_DIR="$REPO_ROOT/docs/$TOPIC"
 
-if [ -d "$TOPIC_DIR" ]; then
-  echo "エラー: $TOPIC/ はすでに存在します"
+if [ -d "$DOCS_DIR" ]; then
+  echo "エラー: docs/$TOPIC/ はすでに存在します"
   exit 1
 fi
-
-# 実装フォルダ
-mkdir -p "$TOPIC_DIR"
-touch "$TOPIC_DIR/.gitkeep"
 
 # docsフォルダ＋メモテンプレート
 mkdir -p "$DOCS_DIR"
@@ -95,10 +90,8 @@ cat > "$DOCS_DIR/README.md" <<EOF
 EOF
 
 echo "作成しました:"
-echo "  $TOPIC/              # 実装を置く場所"
-echo "  docs/$TOPIC/README.md # メモ・チートシート"
+echo "  docs/$TOPIC/README.md"
 echo ""
 echo "次のステップ:"
-echo "  1. $TOPIC/ に実装を追加"
-echo "  2. docs/$TOPIC/README.md にメモを記録"
-echo "  3. README.md の学習ログに追記"
+echo "  1. docs/$TOPIC/README.md にメモを記録"
+echo "  2. README.md の学習ログに追記"
