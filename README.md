@@ -47,7 +47,11 @@ learning-lab/
 
 | 日付 | 技術 | 内容 | 参照 |
 |---|---|---|---|
-| - | - | - | - |
+| 2026-04-24 | Laravel | CRUD・ルート設計 | [メモ](docs/laravel/README.md) |
+| 2026-04-24 | Laravel | Breeze・CSRF・UX | [メモ](docs/laravel/README.md) |
+| 2026-04-24 | Laravel | API実装 | [メモ](docs/laravel/README.md) |
+| 2026-04-24 | Laravel | テスト・ロギング | [メモ](docs/laravel/README.md) |
+| 2026-04-24 | Laravel | タスク管理システム | [メモ](docs/laravel/README.md) |
 
 <!-- 記録例:
 | 2026-04-20 | Laravel | Eloquentのリレーション実装 | [コミット](../commit/abc1234) / [メモ](docs/laravel/eloquent.md) |
