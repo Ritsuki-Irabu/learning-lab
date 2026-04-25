@@ -30,6 +30,7 @@
 | 領域 | レベル |
 |---|---|
 | ルーティング・CRUD | ✅ 完了 |
+| Bladeテンプレート設計 | ✅ 完了 |
 | 認証（Breeze） | ✅ 完了 |
 | API実装 | ✅ 完了 |
 | テスト・ロギング | 学習中 |
@@ -50,6 +51,81 @@ Route::prefix('api')->group(function () {
     Route::get('/posts', [RemotePostController::class, 'index']);
 });
 ```
+
+### Bladeレイアウト・コンポーネント
+
+```blade
+{{-- resources/views/layouts/app.blade.php（共通骨格） --}}
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>@yield('title', 'アプリ名')</title>
+</head>
+<body>
+    @include('layouts.header')
+    <main>
+        @yield('content')
+    </main>
+</body>
+</html>
+
+{{-- 各画面（例: tasks/index.blade.php）--}}
+@extends('layouts.app')
+
+@section('title', 'タスク一覧')
+
+@section('content')
+    <h1>タスク一覧</h1>
+@endsection
+```
+
+```blade
+{{-- コンポーネントレイアウト（$slot パターン） --}}
+{{-- resources/views/components/layout.blade.php --}}
+<!DOCTYPE html>
+<html lang="ja">
+<body>
+    @include('layouts.header')
+    <main>{{ $slot }}</main>
+</body>
+</html>
+
+{{-- 利用側：x-タグで中身を差し込む --}}
+<x-layout>
+    <h1>コンテンツ</h1>
+</x-layout>
+```
+
+```blade
+{{-- resources/views/layouts/header.blade.php（ヘッダー部品） --}}
+<header>
+    <nav>
+        <a href="{{ route('tasks.index') }}">タスク一覧</a>
+        <a href="{{ route('tasks.create') }}">新規登録</a>
+        <span>{{ Auth::user()->name }}</span>
+
+        {{-- ログアウト：セキュリティのため GET ではなく POST で送信 --}}
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            <button type="submit">ログアウト</button>
+        </form>
+    </nav>
+</header>
+
+{{-- app.blade.php で読み込み --}}
+@include('layouts.header')
+```
+
+```blade
+{{-- route() 関数：URLをハードコーディングせずルート名で参照 --}}
+<a href="{{ route('tasks.index') }}">タスク一覧</a>
+<a href="{{ route('tasks.create') }}">新規登録</a>
+<a href="{{ route('tasks.show', $task) }}">詳細</a>
+<a href="{{ route('tasks.edit', $task) }}">編集</a>
+```
+
+---
 
 ### Eloquent
 
@@ -138,6 +214,10 @@ git stash pop                    # 退避した変更を戻す
 - Breezeを用いた認証基盤構築
 - フォームリクエストによるバリデーション分離
 - old()を使った入力保持（UX向上）
+- 共通レイアウト（app.blade.php）の設計（@yield/@section によるコンテンツ差し替え）
+- ヘッダーコンポーネント（layouts/header.blade.php）の切り出しと@includeによる読み込み
+- route()関数を使った動的ナビゲーション（URLハードコーディングの排除）
+- POSTフォーム＋@csrfによる認証連動ログアウト実装
 
 ### API実装
 - RemotePostControllerによるAPIエンドポイント作成
@@ -155,6 +235,16 @@ app/
  │       └─ StorePostRequest.php      # フォームリクエスト
  └─ Models/
      └─ Post.php
+
+resources/views/
+ ├─ layouts/
+ │   ├─ app.blade.php      # 共通レイアウト骨格（@yield('content')）
+ │   └─ header.blade.php   # ヘッダーコンポーネント（ナビゲーション・ログアウト）
+ ├─ components/
+ │   └─ layout.blade.php   # $slot パターンのコンポーネントレイアウト
+ └─ tasks/
+     ├─ index.blade.php    # タスク一覧（@extends('layouts.app')）
+     └─ create.blade.php   # 新規登録（@extends('layouts.app')）
 ```
 
 ### タスク管理システム
@@ -197,3 +287,7 @@ app/
 | 2026-04-24 | API実装 | RemotePostController作成。bootstrap/app.phpへのAPI設定追記がポイント |
 | 2026-04-24 | テスト・ロギング | PHPUnitのアサーション概念とLog::infoによるデバッグ手法を習得 |
 | 2026-04-24 | タスク管理システム | 1対多のリレーション設計、Docker環境構築（Apache/MySQL）、Breezeによる認証基盤導入 |
+| 2026-04-25 | 共通レイアウト設計（app.blade.php） | @yield / @section でコンテンツ差し替え可能な骨格を設計。DRY原則を適用し、デザイン変更を1箇所に集約 |
+| 2026-04-25 | ヘッダーコンポーネント化 | layouts/header.blade.php として切り出し、@include で読み込み。部品化によりデバッグ・修正が容易になる |
+| 2026-04-25 | 動的ナビゲーション | route('tasks.index') 等のルート関数でURLをハードコーディングせず、将来のURL変更に柔軟に対応 |
+| 2026-04-25 | 認証連動ログアウト | POST + @csrf によるログアウト実装。GETリンクではなくフォーム送信でセッション無効化後にloginルートへリダイレクト |

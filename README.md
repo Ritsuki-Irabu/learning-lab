@@ -93,3 +93,7 @@ learning-lab/
 | 2026-04-24 | Laravel | API実装 | [メモ](docs/laravel/README.md) |
 | 2026-04-24 | Laravel | テスト・ロギング | [メモ](docs/laravel/README.md) |
 | 2026-04-24 | Laravel | タスク管理システム | [メモ](docs/laravel/README.md) |
+| 2026-04-25 | Laravel | 共通レイアウト設計（app.blade.php） | [メモ](docs/laravel/README.md) |
+| 2026-04-25 | Laravel | ヘッダーコンポーネント化 | [メモ](docs/laravel/README.md) |
+| 2026-04-25 | Laravel | 動的ナビゲーション | [メモ](docs/laravel/README.md) |
+| 2026-04-25 | Laravel | 認証連動ログアウト | [メモ](docs/laravel/README.md) |
