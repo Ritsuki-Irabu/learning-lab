@@ -31,6 +31,7 @@
 | コンテナの内外操作 | ✅ 完了 |
 | Dockerfile リビルド | ✅ 完了 |
 | 419・404 エラー対処 | ✅ 完了 |
+| Docker Engine 起動不具合（npipe エラー）対処 | ✅ 完了 |
 | Docker Compose 設計 | 学習中 |
 | マルチステージビルド | 未着手 |
 
@@ -138,6 +139,60 @@ docker compose exec apache php artisan key:generate
 
 **なぜ `config:clear` が必要か：**
 Laravel は初回リクエスト時に `.env` の内容を読み込んで `bootstrap/cache/config.php` にキャッシュする。コンテナ再起動後も古いキャッシュが残ると、変更した `.env` の値が反映されない。CSRF はセッションキーの照合に `APP_KEY` を使うため、`APP_KEY` のキャッシュ不整合が直接 419 に繋がる。
+
+---
+
+### Docker Engine 起動不具合：npipe エラーの診断と復旧
+
+#### 症状の構造
+
+Docker Desktop のクジラアイコンが回転しているのに `docker compose` がエラーになる場合、以下の3層で問題が起きている。
+
+| 層 | 状態 | 症状 |
+|---|---|---|
+| Docker Desktop UI（クジラ） | 起動しようとしている / 起動したつもり | 画面上は動いているように見える |
+| Docker Engine（実体） | 心停止 または 起動途中でスタック | 実際のコンテナ管理ができない |
+| 通信経路（npipe） | 未作成 | Engine が立ち上がっていないため pipe が存在しない |
+
+```
+error during connect: ... //./pipe/docker_engine: ...
+```
+
+このエラーは「npipe（名前付きパイプ）が存在しない」＝「Docker Engine が起動していない」を意味する。
+
+#### 復旧手順（設定ファイルを一切変更しない）
+
+```powershell
+# 1. WSL2 を強制リセット（設定は変わらない。Linuxの強制終了）
+wsl --shutdown
+# → 30秒待つ。Dockerが使うLinux基盤が完全に落ちる。
+```
+
+```
+# 2. Dockerプロセスの完全終了
+タスクマネージャー → 名前に「Docker」が含まれるプロセスをすべて「タスクの終了」
+```
+
+```
+# 3. Docker Desktopを管理者権限で起動
+スタートメニュー → Docker Desktop を右クリック → 「管理者として実行」
+（権限不足によるpipe作成の失敗を防ぐ）
+```
+
+```
+# 4. クジラアイコンが「緑（Engine running）」になるまで待つ
+UI上でEngine runningになるまでdocker compose を打たない
+→ 焦って打つと再度 npipe エラーが出る
+```
+
+#### 各ステップの理由
+
+| ステップ | なぜ必要か |
+|---|---|
+| `wsl --shutdown` | Engine がWSL2のLinux内プロセスとして動いているため。Linuxを再起動することで「途中でスタックした状態」を強制解除できる |
+| タスクの終了 | `wsl --shutdown` 後もWindowsプロセスとしてDockerのUIや補助プロセスが残る場合がある。クリーンな再起動のために全終了する |
+| 管理者として実行 | npipe の作成には管理者権限が必要な場合がある。権限不足が原因でEngineが起動途中でスタックするケースがある |
+| Engine running を確認してから操作 | npipe はEngine起動後に初めて作成される。Engine起動前にdocker コマンドを打つと確実にエラーになる |
 
 ---
 
@@ -276,3 +331,4 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 | 2026-04-27 | Dockerfile リビルド | `docker compose up` は既存イメージを再利用する。Dockerfile 変更後は `--build` フラグで再ビルドが必要 |
 | 2026-04-27 | 419 エラー対処 | Laravel の CSRF トークン検証失敗。`config:clear` + `cache:clear` でキャッシュ不整合を解消する。根本原因は APP_KEY 不一致やセッション失効 |
 | 2026-04-27 | 404 エラー対処 | `mod_rewrite` が無効だと Laravel の `.htaccess` が機能せず、全リクエストが `index.php` に転送されない。`apache2ctl -M` で確認し、Dockerfile に `RUN a2enmod rewrite` を必ず記述する |
+| 2026-05-03 | Docker Engine 起動不具合（npipe エラー） | UIが動いていてもEngineがWSL2内でスタックしているとnpipeが作られずコマンドが通らない。`wsl --shutdown` → Dockerプロセス全終了 → 管理者権限で再起動 → Engine runningを確認してから操作する |
