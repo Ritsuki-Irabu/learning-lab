@@ -103,4 +103,4 @@ learning-lab/
 | 2026-04-27 | Docker | Dockerfile リビルド（--build / --no-cache） | [メモ](docs/docker/README.md) |
 | 2026-04-27 | Docker | 419 エラー対処（CSRF・config:clear の仕組み） | [メモ](docs/docker/README.md) |
 | 2026-04-27 | Docker | 404 エラー対処（mod_rewrite・Front Controller） | [メモ](docs/docker/README.md) |
-| 2026-05-03 | Docker | Engine 起動不具合（npipe エラー）の診断と復旧手順 | [メモ](docs/docker/README.md) |
+| 2026-05-03 | Docker | Engine 起動不具合（npipe エラー）の診断と復旧手順 | [メモ](docs/docker/README.md) ✅ |
