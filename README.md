@@ -74,6 +74,7 @@ learning-lab/
 │       └── learning-lab/  # /learning-lab スキル
 ├── docs/                  # 技術別ドキュメント・チートシート
 │   ├── docker/
+│   ├── git/
 │   ├── java/
 │   ├── laravel/
 │   ├── nextjs/
@@ -107,3 +108,5 @@ learning-lab/
 | 2026-05-04 | Laravel | Eloquentスコープ・$casts・アクセサ | [メモ](docs/laravel/README.md) |
 | 2026-05-04 | Laravel | Rule::in()バリデーション・ソートSQLi対策 | [メモ](docs/laravel/README.md) |
 | 2026-05-04 | Laravel | 削除確認モーダル・BEM CSS・JS外部化 | [メモ](docs/laravel/README.md) |
+| 2026-05-05 | Git | 実務ブランチ戦略（main=本番・staging=ステージ） | [メモ](docs/git/README.md) |
+| 2026-05-05 | Git | Feature Branch を切る判断基準 | [メモ](docs/git/README.md) |
