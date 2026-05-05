@@ -30,6 +30,13 @@
 
 ### dotenv が必要な理由（Prisma CLI + Next.js 構成）
 
+#### .env の読み込みフロー比較
+
+```
+通常（Next.js）:  .env  →  Next.js が自動で読む
+Prisma CLI:      .env  →  prisma.config.ts  →  Prisma CLI
+```
+
 #### 問題：Prisma CLI は Next.js を経由しない
 
 ```
