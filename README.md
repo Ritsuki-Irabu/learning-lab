@@ -78,7 +78,8 @@ learning-lab/
 │   ├── java/
 │   ├── laravel/
 │   ├── nextjs/
-│   └── playwright/
+│   ├── playwright/
+│   └── ui-patterns/
 ├── scripts/               # 管理スクリプト
 ├── CLAUDE.md
 └── README.md
@@ -108,5 +109,10 @@ learning-lab/
 | 2026-05-04 | Laravel | Eloquentスコープ・$casts・アクセサ | [メモ](docs/laravel/README.md) |
 | 2026-05-04 | Laravel | Rule::in()バリデーション・ソートSQLi対策 | [メモ](docs/laravel/README.md) |
 | 2026-05-04 | Laravel | 削除確認モーダル・BEM CSS・JS外部化 | [メモ](docs/laravel/README.md) |
+| 2026-05-04 | UI パターン | Modal・Dialog・Popup の定義整理 | [メモ](docs/ui-patterns/README.md) |
+| 2026-05-04 | UI パターン | 3用語の本質（制御・表示形式・やり取り） | [メモ](docs/ui-patterns/README.md) ✅ |
+| 2026-05-04 | UI パターン | `showModal()` vs `show()` の違い | [メモ](docs/ui-patterns/README.md) |
+| 2026-05-04 | UI パターン | HTML Popover API（2024年正式化） | [メモ](docs/ui-patterns/README.md) |
+| 2026-05-04 | UI パターン | ARIA ロールと `<dialog>` 要素の関係 | [メモ](docs/ui-patterns/README.md) |
 | 2026-05-05 | Git | 実務ブランチ戦略（main=本番・staging=ステージ） | [メモ](docs/git/README.md) |
 | 2026-05-05 | Git | Feature Branch を切る判断基準 | [メモ](docs/git/README.md) |
