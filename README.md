@@ -118,3 +118,5 @@ learning-lab/
 | 2026-05-05 | Git | Feature Branch を切る判断基準 | [メモ](docs/git/README.md) |
 | 2026-05-05 | Next.js | dotenv が必要な理由（Prisma CLI は Next.js を経由しない） | [メモ](docs/nextjs/README.md) |
 | 2026-05-05 | Next.js | .env のセキュリティ上の役割と .gitignore による除外 | [メモ](docs/nextjs/README.md) |
+| 2026-05-06 | Next.js | Auth.js で Google ログイン実装（5ステップ） | [メモ](docs/nextjs/README.md) |
+| 2026-05-06 | Next.js | `[...nextauth]` キャッチオールルートの仕組み | [メモ](docs/nextjs/README.md) |
