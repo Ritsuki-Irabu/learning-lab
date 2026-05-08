@@ -101,7 +101,7 @@ learning-lab/
 | 2026-04-25 | Laravel | 動的ナビゲーション | [メモ](docs/laravel/README.md) |
 | 2026-04-25 | Laravel | 認証連動ログアウト | [メモ](docs/laravel/README.md) |
 | 2026-04-27 | Docker | WSL2 ターミナル必須（PowerShell 不可の理由） | [メモ](docs/docker/README.md) |
-| 2026-04-27 | Docker | コンテナの内外意識（exec / exit の挙動） | [メモ](docs/docker/README.md) |
+| 2026-04-27 | Docker | コンテナの内外意識（exec / exit の挙動） | [メモ](docs/docker/README.md) ✅ |
 | 2026-04-27 | Docker | Dockerfile リビルド（--build / --no-cache） | [メモ](docs/docker/README.md) |
 | 2026-04-27 | Docker | 419 エラー対処（CSRF・config:clear の仕組み） | [メモ](docs/docker/README.md) |
 | 2026-04-27 | Docker | 404 エラー対処（mod_rewrite・Front Controller） | [メモ](docs/docker/README.md) |
