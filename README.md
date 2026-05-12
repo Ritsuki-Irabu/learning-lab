@@ -107,7 +107,7 @@ learning-lab/
 | 2026-04-27 | Docker | 404 エラー対処（mod_rewrite・Front Controller） | [メモ](docs/docker/README.md) |
 | 2026-05-03 | Docker | Engine 起動不具合（npipe エラー）の診断と復旧手順 | [メモ](docs/docker/README.md) ✅ |
 | 2026-05-04 | Laravel | Eloquentスコープ・$casts・アクセサ | [メモ](docs/laravel/README.md) |
-| 2026-05-04 | Laravel | Rule::in()バリデーション・ソートSQLi対策 | [メモ](docs/laravel/README.md) |
+| 2026-05-04 | Laravel | Rule::in()バリデーション・ソートSQLi対策 | [メモ](docs/laravel/README.md) ✅ |
 | 2026-05-04 | Laravel | 削除確認モーダル・BEM CSS・JS外部化 | [メモ](docs/laravel/README.md) |
 | 2026-05-04 | UI パターン | Modal・Dialog・Popup の定義整理 | [メモ](docs/ui-patterns/README.md) |
 | 2026-05-04 | UI パターン | 3用語の本質（制御・表示形式・やり取り） | [メモ](docs/ui-patterns/README.md) ✅ |
