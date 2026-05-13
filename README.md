@@ -120,3 +120,8 @@ learning-lab/
 | 2026-05-05 | Next.js | .env のセキュリティ上の役割と .gitignore による除外 | [メモ](docs/nextjs/README.md) |
 | 2026-05-06 | Next.js | Auth.js で Google ログイン実装（5ステップ） | [メモ](docs/nextjs/README.md) ✅ |
 | 2026-05-06 | Next.js | `[...nextauth]` キャッチオールルートの仕組み | [メモ](docs/nextjs/README.md) ✅ |
+| 2026-05-13 | Next.js | Prisma とは（ORM・Eloquent / JPA 相当） | [メモ](docs/nextjs/README.md) |
+| 2026-05-13 | Next.js | Prisma の3要素（Schema・Migrate・Client） | [メモ](docs/nextjs/README.md) |
+| 2026-05-13 | Next.js | シングルトンパターン（Prisma Client・globalThis） | [メモ](docs/nextjs/README.md) |
+| 2026-05-13 | Next.js | POST /api/logs 処理フロー（5ステップ） | [メモ](docs/nextjs/README.md) |
+| 2026-05-13 | Next.js | Gemini 失敗時の設計判断（ThoughtLog 先行保存） | [メモ](docs/nextjs/README.md) |
