@@ -109,39 +109,13 @@ cat docs/<技術名>/README.md
 
 ### 7. コミット・プッシュ（必須）
 
-**原則は main へ直接プッシュする。** ブランチを切るのは大きな変更のみ。
-
-#### ブランチを切らない（通常）
-
-新規ドキュメント追加・既存ドキュメントの更新・学習ログ追記など、ほとんどの作業はこちら：
+**常に main へ直接プッシュする。フィーチャーブランチは切らない。**
 
 ```bash
 git add docs/<技術名>/README.md README.md
 git commit -m "docs: <技術名>ドキュメントを更新・誤り訂正"
 git push origin main
 ```
-
-#### ブランチを切る（大きな変更のみ）
-
-以下に該当する場合のみブランチを作成する：
-
-- `docs/` 以下のディレクトリ構造を変更する
-- 複数ドキュメントにまたがる大規模なリファクタリング
-- 取り消す可能性がある試験的な変更
-
-```bash
-git checkout -b docs/<技術名>-update
-git add docs/<技術名>/README.md README.md
-git commit -m "docs: <技術名>ドキュメントを更新・誤り訂正"
-git push -u origin docs/<技術名>-update
-```
-
-ブランチを切った場合は `mcp__github__create_pull_request` で PR を作成する（base: main）。
-**PR のタイトル・本文は必ず日本語で記述すること。**
-
-#### 判断に迷ったら
-
-ブランチを切るべきか迷ったら、作業前にユーザーに確認する。
 
 ---
 
