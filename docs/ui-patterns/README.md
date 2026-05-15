@@ -180,8 +180,8 @@ document.getElementById('cancel').addEventListener('click', () => {
 
 | 日付 | トピック | メモ |
 |---|---|---|
-| 2026-05-04 | Modal・Dialog・Popup の定義整理 | Modal＝背景ブロックあり、Dialog＝HTML意味論（両方含む）、Popup＝非ブロッキング俗称 |
-| 2026-05-04 | 3用語の本質的な違い | Modal＝制御、Popup＝突然の表示という形式、Dialog＝やり取り（行動を促す対話）というコンピュータ用語 |
-| 2026-05-04 | `showModal()` vs `show()` の違い | showModal はブロッキング＋backdrop、show は非ブロッキング |
-| 2026-05-04 | HTML Popover API（2024年正式化） | `popover` 属性で宣言的に実装可能。`auto`/`manual` の2種類 |
-| 2026-05-04 | ARIA ロールと `<dialog>` 要素の関係 | showModal()は`aria-modal`を自動付与しない（手動設定が必要） |
+| 2026-05-15 | Modal・Dialog・Popup の定義整理 | Modal＝背景ブロックあり、Dialog＝HTML意味論（両方含む）、Popup＝非ブロッキング俗称 |
+| 2026-05-15 | 3用語の本質的な違い | Modal＝制御、Popup＝突然の表示という形式、Dialog＝やり取り（行動を促す対話）というコンピュータ用語 |
+| 2026-05-15 | `showModal()` vs `show()` の違い | showModal はブロッキング＋backdrop、show は非ブロッキング |
+| 2026-05-15 | HTML Popover API（2024年正式化） | `popover` 属性で宣言的に実装可能。`auto`/`manual` の2種類 |
+| 2026-05-15 | ARIA ロールと `<dialog>` 要素の関係 | showModal()は`aria-modal`を自動付与しない（手動設定が必要） |
