@@ -127,5 +127,5 @@ learning-lab/
 | 2026-05-13 | Next.js | Gemini 失敗時の設計判断（ThoughtLog 先行保存） | [メモ](docs/nextjs/README.md) |
 | 2026-05-16 | Laravel | ホワイトリストソートの落とし穴（assigned_user_id 追加漏れ） | [メモ](docs/laravel/README.md) |
 | 2026-05-16 | Laravel | url()->previous() による直前画面遷移 | [メモ](docs/laravel/README.md) |
-| 2026-05-16 | Laravel | email:filter バリデーション強化 | [メモ](docs/laravel/README.md) |
+| 2026-05-16 | Laravel | email:filter バリデーション強化 | [メモ](docs/laravel/README.md) ✅ |
 | 2026-05-16 | Laravel | GitHubレビュー対応ワークフロー・npm run build の実行場所 | [メモ](docs/laravel/README.md) |
