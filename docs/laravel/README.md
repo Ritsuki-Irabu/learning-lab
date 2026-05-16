@@ -404,3 +404,8 @@ config/
 | 2026-05-04 | 削除確認モーダル（vanilla JS） | data-* 属性でタスク情報をボタンに持たせ、JS でモーダルに反映。JS は外部ファイル化して app.js で import |
 | 2026-05-04 | BEM CSS設計・インラインスタイル外部化 | style="" を app.css の BEM クラスに移行。クラス名がブロック・要素・モディファイアの構造を表し保守性が上がる |
 | 2026-05-04 | JS外部ファイル化（Vite） | onchange / <script> タグを resources/js/*.js に分離。app.js で import し npm run build でバンドル |
+| 2026-05-16 | ホワイトリストソートの落とし穴 | 許可リストへの追加漏れが典型的なミス。新カラム（assigned_user_id など）を追加したらホワイトリストへの登録を忘れずに |
+| 2026-05-16 | url()->previous() による直前画面遷移 | Laravel の Referer ベース直前 URL 取得。戻るボタンに固定 URL ではなくユーザーの動線を反映できる |
+| 2026-05-16 | email:filter バリデーション強化 | Laravel の email ルールは RFC 準拠が緩い。email:filter を使うと PHP の FILTER_VALIDATE_EMAIL（実用的な厳格さ）が適用される |
+| 2026-05-16 | GitHubレビュー対応のワークフロー | レビューコメントへの対応は同じブランチへプッシュするだけで自動反映。PR を再作成する必要はない |
+| 2026-05-16 | npm run build の実行場所 | ホストマシン側で実行してビルド済みアセットをコミットする。Docker コンテナ内での実行は不要 |
