@@ -90,50 +90,103 @@ learning-lab/
 
 ## 学習ログ
 
-| 日付 | 技術 | 内容 | 参照 |
-|---|---|---|---|
-| 2026-04-24 | Laravel | CRUD・ルート設計 | [メモ](docs/laravel/README.md) |
-| 2026-04-24 | Laravel | Breeze・CSRF・UX | [メモ](docs/laravel/README.md) |
-| 2026-04-24 | Laravel | API実装 | [メモ](docs/laravel/README.md) |
-| 2026-04-24 | Laravel | テスト・ロギング | [メモ](docs/laravel/README.md) |
-| 2026-04-24 | Laravel | タスク管理システム | [メモ](docs/laravel/README.md) |
-| 2026-04-25 | Laravel | 共通レイアウト設計（app.blade.php） | [メモ](docs/laravel/README.md) |
-| 2026-04-25 | Laravel | ヘッダーコンポーネント化 | [メモ](docs/laravel/README.md) |
-| 2026-04-25 | Laravel | 動的ナビゲーション | [メモ](docs/laravel/README.md) |
-| 2026-04-25 | Laravel | 認証連動ログアウト | [メモ](docs/laravel/README.md) |
-| 2026-04-27 | Docker | WSL2 ターミナル必須（PowerShell 不可の理由） | [メモ](docs/docker/README.md) |
-| 2026-04-27 | Docker | コンテナの内外意識（exec / exit の挙動） | [メモ](docs/docker/README.md) ✅ |
-| 2026-04-27 | Docker | Dockerfile リビルド（--build / --no-cache） | [メモ](docs/docker/README.md) |
-| 2026-04-27 | Docker | 419 エラー対処（CSRF・config:clear の仕組み） | [メモ](docs/docker/README.md) |
-| 2026-04-27 | Docker | 404 エラー対処（mod_rewrite・Front Controller） | [メモ](docs/docker/README.md) |
-| 2026-05-03 | Docker | Engine 起動不具合（npipe エラー）の診断と復旧手順 | [メモ](docs/docker/README.md) ✅ |
-| 2026-05-04 | Laravel | Eloquentスコープ・$casts・アクセサ | [メモ](docs/laravel/README.md) |
-| 2026-05-04 | Laravel | Rule::in()バリデーション・ソートSQLi対策 | [メモ](docs/laravel/README.md) ✅ |
-| 2026-05-04 | Laravel | 削除確認モーダル・BEM CSS・JS外部化 | [メモ](docs/laravel/README.md) |
-| 2026-05-04 | UI パターン | Modal・Dialog・Popup の定義整理 | [メモ](docs/ui-patterns/README.md) |
-| 2026-05-04 | UI パターン | 3用語の本質（制御・表示形式・やり取り） | [メモ](docs/ui-patterns/README.md) ✅ |
-| 2026-05-04 | UI パターン | `showModal()` vs `show()` の違い | [メモ](docs/ui-patterns/README.md) |
-| 2026-05-04 | UI パターン | HTML Popover API（2024年正式化） | [メモ](docs/ui-patterns/README.md) |
-| 2026-05-04 | UI パターン | ARIA ロールと `<dialog>` 要素の関係 | [メモ](docs/ui-patterns/README.md) |
-| 2026-05-05 | Git | 実務ブランチ戦略（main=本番・staging=ステージ） | [メモ](docs/git/README.md) ✅ |
-| 2026-05-05 | Git | Feature Branch を切る判断基準 | [メモ](docs/git/README.md) ✅ |
-| 2026-05-05 | Next.js | dotenv が必要な理由（Prisma CLI は Next.js を経由しない） | [メモ](docs/nextjs/README.md) |
-| 2026-05-05 | Next.js | .env のセキュリティ上の役割と .gitignore による除外 | [メモ](docs/nextjs/README.md) |
-| 2026-05-06 | Next.js | Auth.js で Google ログイン実装（5ステップ） | [メモ](docs/nextjs/README.md) ✅ |
-| 2026-05-06 | Next.js | `[...nextauth]` キャッチオールルートの仕組み | [メモ](docs/nextjs/README.md) ✅ |
-| 2026-05-13 | Next.js | Prisma とは（ORM・Eloquent / JPA 相当） | [メモ](docs/nextjs/README.md) |
-| 2026-05-13 | Next.js | Prisma の3要素（Schema・Migrate・Client） | [メモ](docs/nextjs/README.md) |
-| 2026-05-13 | Next.js | シングルトンパターン（Prisma Client・globalThis） | [メモ](docs/nextjs/README.md) |
-| 2026-05-13 | Next.js | POST /api/logs 処理フロー（5ステップ） | [メモ](docs/nextjs/README.md) |
-| 2026-05-13 | Next.js | Gemini 失敗時の設計判断（ThoughtLog 先行保存） | [メモ](docs/nextjs/README.md) |
-| 2026-05-16 | Laravel | ホワイトリストソートの落とし穴（assigned_user_id 追加漏れ） | [メモ](docs/laravel/README.md) |
-| 2026-05-16 | Laravel | url()->previous() による直前画面遷移 | [メモ](docs/laravel/README.md) |
-| 2026-05-16 | Laravel | email:filter バリデーション強化 | [メモ](docs/laravel/README.md) ✅ |
-| 2026-05-16 | Laravel | GitHubレビュー対応ワークフロー・npm run build の実行場所 | [メモ](docs/laravel/README.md) |
-| 2026-05-18 | テストツール | テストピラミッド（単体→統合→E2E）の構造と各層の役割 | [メモ](docs/testing-tools/README.md) ✅ |
-| 2026-05-18 | テストツール | Vitestの位置づけ：ロジック・コンポーネントの単体テスト担当 | [メモ](docs/testing-tools/README.md) |
-| 2026-05-18 | テストツール | Postmanの位置づけ：HTTPエンドポイントの通信確認担当 | [メモ](docs/testing-tools/README.md) |
-| 2026-05-18 | テストツール | Playwrightの位置づけ：ブラウザUI操作のE2E担当 | [メモ](docs/testing-tools/README.md) |
-| 2026-05-18 | テストツール | ツール選択の指針：「何が壊れたときに検知したいか」で選ぶ | [メモ](docs/testing-tools/README.md) |
-| 2026-05-18 | Playwright | ロケーター優先順位（getByRole > getByLabel > getByTestId > locator） | [メモ](docs/playwright/README.md) |
-| 2026-05-18 | Playwright | page.route()でAPIモック・バックエンド依存を切り離す | [メモ](docs/playwright/README.md) |
+<details>
+<summary>Laravel（13件）</summary>
+
+| 日付 | 内容 | 参照 |
+|---|---|---|
+| 2026-04-24 | CRUD・ルート設計 | [メモ](docs/laravel/README.md) |
+| 2026-04-24 | Breeze・CSRF・UX | [メモ](docs/laravel/README.md) |
+| 2026-04-24 | API実装 | [メモ](docs/laravel/README.md) |
+| 2026-04-24 | テスト・ロギング | [メモ](docs/laravel/README.md) |
+| 2026-04-24 | タスク管理システム | [メモ](docs/laravel/README.md) |
+| 2026-04-25 | 共通レイアウト設計（app.blade.php） | [メモ](docs/laravel/README.md) |
+| 2026-04-25 | ヘッダーコンポーネント化 | [メモ](docs/laravel/README.md) |
+| 2026-04-25 | 動的ナビゲーション | [メモ](docs/laravel/README.md) |
+| 2026-04-25 | 認証連動ログアウト | [メモ](docs/laravel/README.md) |
+| 2026-05-04 | Eloquentスコープ・$casts・アクセサ | [メモ](docs/laravel/README.md) |
+| 2026-05-04 | Rule::in()バリデーション・ソートSQLi対策 | [メモ](docs/laravel/README.md) ✅ |
+| 2026-05-04 | 削除確認モーダル・BEM CSS・JS外部化 | [メモ](docs/laravel/README.md) |
+| 2026-05-16 | ホワイトリストソートの落とし穴（assigned_user_id 追加漏れ） | [メモ](docs/laravel/README.md) |
+| 2026-05-16 | url()->previous() による直前画面遷移 | [メモ](docs/laravel/README.md) |
+| 2026-05-16 | email:filter バリデーション強化 | [メモ](docs/laravel/README.md) ✅ |
+| 2026-05-16 | GitHubレビュー対応ワークフロー・npm run build の実行場所 | [メモ](docs/laravel/README.md) |
+
+</details>
+
+<details>
+<summary>Docker（6件）</summary>
+
+| 日付 | 内容 | 参照 |
+|---|---|---|
+| 2026-04-27 | WSL2 ターミナル必須（PowerShell 不可の理由） | [メモ](docs/docker/README.md) |
+| 2026-04-27 | コンテナの内外意識（exec / exit の挙動） | [メモ](docs/docker/README.md) ✅ |
+| 2026-04-27 | Dockerfile リビルド（--build / --no-cache） | [メモ](docs/docker/README.md) |
+| 2026-04-27 | 419 エラー対処（CSRF・config:clear の仕組み） | [メモ](docs/docker/README.md) |
+| 2026-04-27 | 404 エラー対処（mod_rewrite・Front Controller） | [メモ](docs/docker/README.md) |
+| 2026-05-03 | Engine 起動不具合（npipe エラー）の診断と復旧手順 | [メモ](docs/docker/README.md) ✅ |
+
+</details>
+
+<details>
+<summary>UI パターン（5件）</summary>
+
+| 日付 | 内容 | 参照 |
+|---|---|---|
+| 2026-05-04 | Modal・Dialog・Popup の定義整理 | [メモ](docs/ui-patterns/README.md) |
+| 2026-05-04 | 3用語の本質（制御・表示形式・やり取り） | [メモ](docs/ui-patterns/README.md) ✅ |
+| 2026-05-04 | `showModal()` vs `show()` の違い | [メモ](docs/ui-patterns/README.md) |
+| 2026-05-04 | HTML Popover API（2024年正式化） | [メモ](docs/ui-patterns/README.md) |
+| 2026-05-04 | ARIA ロールと `<dialog>` 要素の関係 | [メモ](docs/ui-patterns/README.md) |
+
+</details>
+
+<details>
+<summary>Git（2件）</summary>
+
+| 日付 | 内容 | 参照 |
+|---|---|---|
+| 2026-05-05 | 実務ブランチ戦略（main=本番・staging=ステージ） | [メモ](docs/git/README.md) ✅ |
+| 2026-05-05 | Feature Branch を切る判断基準 | [メモ](docs/git/README.md) ✅ |
+
+</details>
+
+<details>
+<summary>Next.js（7件）</summary>
+
+| 日付 | 内容 | 参照 |
+|---|---|---|
+| 2026-05-05 | dotenv が必要な理由（Prisma CLI は Next.js を経由しない） | [メモ](docs/nextjs/README.md) |
+| 2026-05-05 | .env のセキュリティ上の役割と .gitignore による除外 | [メモ](docs/nextjs/README.md) |
+| 2026-05-06 | Auth.js で Google ログイン実装（5ステップ） | [メモ](docs/nextjs/README.md) ✅ |
+| 2026-05-06 | `[...nextauth]` キャッチオールルートの仕組み | [メモ](docs/nextjs/README.md) ✅ |
+| 2026-05-13 | Prisma とは（ORM・Eloquent / JPA 相当） | [メモ](docs/nextjs/README.md) |
+| 2026-05-13 | Prisma の3要素（Schema・Migrate・Client） | [メモ](docs/nextjs/README.md) |
+| 2026-05-13 | シングルトンパターン（Prisma Client・globalThis） | [メモ](docs/nextjs/README.md) |
+| 2026-05-13 | POST /api/logs 処理フロー（5ステップ） | [メモ](docs/nextjs/README.md) |
+| 2026-05-13 | Gemini 失敗時の設計判断（ThoughtLog 先行保存） | [メモ](docs/nextjs/README.md) |
+
+</details>
+
+<details>
+<summary>テストツール（5件）</summary>
+
+| 日付 | 内容 | 参照 |
+|---|---|---|
+| 2026-05-18 | テストピラミッド（単体→統合→E2E）の構造と各層の役割 | [メモ](docs/testing-tools/README.md) ✅ |
+| 2026-05-18 | Vitestの位置づけ：ロジック・コンポーネントの単体テスト担当 | [メモ](docs/testing-tools/README.md) |
+| 2026-05-18 | Postmanの位置づけ：HTTPエンドポイントの通信確認担当 | [メモ](docs/testing-tools/README.md) |
+| 2026-05-18 | Playwrightの位置づけ：ブラウザUI操作のE2E担当 | [メモ](docs/testing-tools/README.md) |
+| 2026-05-18 | ツール選択の指針：「何が壊れたときに検知したいか」で選ぶ | [メモ](docs/testing-tools/README.md) |
+
+</details>
+
+<details>
+<summary>Playwright（2件）</summary>
+
+| 日付 | 内容 | 参照 |
+|---|---|---|
+| 2026-05-18 | ロケーター優先順位（getByRole > getByLabel > getByTestId > locator） | [メモ](docs/playwright/README.md) |
+| 2026-05-18 | page.route()でAPIモック・バックエンド依存を切り離す | [メモ](docs/playwright/README.md) |
+
+</details>
