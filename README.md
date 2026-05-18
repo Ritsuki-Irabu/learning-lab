@@ -79,6 +79,7 @@ learning-lab/
 │   ├── laravel/
 │   ├── nextjs/
 │   ├── playwright/
+│   ├── testing-tools/
 │   └── ui-patterns/
 ├── scripts/               # 管理スクリプト
 ├── CLAUDE.md
@@ -129,3 +130,10 @@ learning-lab/
 | 2026-05-16 | Laravel | url()->previous() による直前画面遷移 | [メモ](docs/laravel/README.md) |
 | 2026-05-16 | Laravel | email:filter バリデーション強化 | [メモ](docs/laravel/README.md) ✅ |
 | 2026-05-16 | Laravel | GitHubレビュー対応ワークフロー・npm run build の実行場所 | [メモ](docs/laravel/README.md) |
+| 2026-05-18 | テストツール | テストピラミッド（単体→統合→E2E）の構造と各層の役割 | [メモ](docs/testing-tools/README.md) |
+| 2026-05-18 | テストツール | Vitestの位置づけ：ロジック・コンポーネントの単体テスト担当 | [メモ](docs/testing-tools/README.md) |
+| 2026-05-18 | テストツール | Postmanの位置づけ：HTTPエンドポイントの通信確認担当 | [メモ](docs/testing-tools/README.md) |
+| 2026-05-18 | テストツール | Playwrightの位置づけ：ブラウザUI操作のE2E担当 | [メモ](docs/testing-tools/README.md) |
+| 2026-05-18 | テストツール | ツール選択の指針：「何が壊れたときに検知したいか」で選ぶ | [メモ](docs/testing-tools/README.md) |
+| 2026-05-18 | Playwright | ロケーター優先順位（getByRole > getByLabel > getByTestId > locator） | [メモ](docs/playwright/README.md) |
+| 2026-05-18 | Playwright | page.route()でAPIモック・バックエンド依存を切り離す | [メモ](docs/playwright/README.md) |
