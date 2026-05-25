@@ -169,7 +169,7 @@ learning-lab/
 </details>
 
 <details>
-<summary>テストツール（5件）</summary>
+<summary>テストツール（6件）</summary>
 
 | 日付 | 内容 | 参照 |
 |---|---|---|
@@ -178,6 +178,7 @@ learning-lab/
 | 2026-05-18 | Postmanの位置づけ：HTTPエンドポイントの通信確認担当 | [メモ](docs/testing-tools/README.md) |
 | 2026-05-18 | Playwrightの位置づけ：ブラウザUI操作のE2E担当 | [メモ](docs/testing-tools/README.md) |
 | 2026-05-18 | ツール選択の指針：「何が壊れたときに検知したいか」で選ぶ | [メモ](docs/testing-tools/README.md) |
+| 2026-05-18 | Playwrightのネットワークモック：page.route()でE2Eを安定化 | [メモ](docs/testing-tools/README.md) |
 
 </details>
 
