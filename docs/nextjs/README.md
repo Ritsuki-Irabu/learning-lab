@@ -27,7 +27,7 @@
 |---|---|
 | App Router | ルーティング・API Route 実装経験あり |
 | Prisma | Schema 設計・Migrate・Client 実装経験あり |
-| Auth.js | Google OAuth 実装経験あり |
+| Auth.js | Google OAuth 実装・セッション戦略・Edge Runtime 対応経験あり |
 
 ---
 
@@ -170,6 +170,64 @@ if (process.env.NODE_ENV !== 'production') {
 
 ---
 
+### Auth.js セッション戦略と Middleware の落とし穴
+
+#### セッション戦略の比較
+
+| 戦略 | 仕組み | Cookie の中身 | DB 照会 |
+|---|---|---|---|
+| `database`（デフォルト） | 認証成功時に DB へセッションレコードを生成し、Cookie にはそのキー（UUID）のみ格納 | UUID（不透明なトークン） | 必要 |
+| `jwt` | セッションデータ自体を暗号化・署名して JWT として Cookie に持たせる | JWE（暗号化済み JWT） | 不要（ステートレス） |
+
+#### Edge Runtime とは
+
+`middleware.ts` は Vercel 等のインフラでリクエストがオリジンサーバ（Node.js）に到達する前の**エッジノード（CDN 側）**で実行される。この実行環境を **Edge Runtime** と呼ぶ。
+
+V8 エンジンベースの極めて軽量な環境で、**Node.js のフル機能（ファイルシステム・C++ ネイティブバインディング）は利用できない**。そのため Prisma などの重厚な DB 接続ドライバは動作しない。
+
+#### 🚨 無限ログインループの根本原因
+
+NextAuth の `middleware.ts` は Edge Runtime 上で動作するため、DB アクセス不可と判断すると**自動的に `jwt` 戦略へフォールバック**する。
+
+```
+[バックエンド] database 戦略 → Cookie に UUID を格納
+[Middleware]  jwt 戦略に切替 → UUID を JWE としてパース → JWEInvalid 例外
+                             → Cookie クリア → /signIn へリダイレクト
+[再ログイン]  database 戦略 → 再び UUID を格納 → 無限ループ
+```
+
+ループの手順：
+
+1. バックエンド（Node.js）が `database` 戦略で UUID Cookie を発行
+2. 次のリクエストで `middleware.ts` が起動、`jwt` 戦略に切り替わる
+3. UUID 文字列を JWE としてデコードしようとして `JWEInvalid` が発生
+4. NextAuth が「不正なセッション」とみなし Cookie を削除、`/signIn` へリダイレクト
+5. 再ログインしても 1 に戻り、永遠に入れない
+
+#### 🛠️ 解決策：2段構えハイブリッド検証パターン
+
+Edge Runtime の速度的恩恵を維持しながら `database` 戦略を安全に使うベストプラクティス。
+
+```
+リクエスト
+  ↓
+[第1段階] middleware.ts（Edge Runtime）
+  └─ Cookie の存在チェックのみ（デコード・DB 照会なし）
+  └─ Cookie なし → /signIn へはじく
+  └─ Cookie あり → 通過
+  ↓
+[第2段階] Server Components / API Routes（Node.js）
+  └─ await auth() で UUID を使って DB のセッションテーブルを照会
+  └─ 有効期限・権限の厳密な検証
+```
+
+| 段階 | 環境 | 検証内容 | メリット |
+|---|---|---|---|
+| Middleware | Edge Runtime | Cookie の存在チェックのみ | ゼロに近いレイテンシで未ログインを弾く |
+| Server Component / API | Node.js | `await auth()` で DB の厳密な検証 | Prisma フル稼働、有効期限・権限を正確に確認 |
+
+---
+
 ## 実装資産
 
 ### プロジェクト全体スプリント計画
@@ -263,3 +321,7 @@ if (process.env.NODE_ENV !== 'production') {
 | 2026-05-13 | シングルトンパターン（Prisma Client） | ホットリロードによる PrismaClient 増殖を `globalThis` で防ぐ設計パターン |
 | 2026-05-13 | POST /api/logs 処理フロー | セッション確認→ThoughtLog 保存→Gemini 分析→Result 保存→完了通知の5ステップ |
 | 2026-05-13 | Gemini 失敗時の設計判断 | ThoughtLog を先に保存してユーザー入力を保護。分析失敗でもデータを失わない方針 |
+| 2026-05-25 | Auth.js セッション戦略（database vs jwt） | database 戦略はCookieにUUIDのみ格納してDBを参照。jwt戦略はJWEをCookieに持ちステートレスに検証 |
+| 2026-05-25 | Edge Runtime の制限 | middleware.tsが動作する環境。V8ベースで軽量だがNode.jsのネイティブバインディング（Prismaなど）は使えない |
+| 2026-05-25 | Middlewareの強制jwtフォールバックと無限ログインループ | NextAuthはEdge環境を検知するとjwt戦略に強制切替。database戦略のUUIDをJWEとしてパースしJWEInvalidが発生→Cookie削除→/signInへリダイレクト→無限ループ |
+| 2026-05-25 | 2段構えハイブリッド検証パターン | Middleware（Edge）ではCookie存在チェックのみ、Server Component（Node.js）でawait auth()による厳密なDB検証。database戦略を維持しながらEdgeの速度を活かせる |
