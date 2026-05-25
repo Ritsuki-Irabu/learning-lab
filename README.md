@@ -91,7 +91,7 @@ learning-lab/
 ## 学習ログ
 
 <details>
-<summary>Laravel（13件）</summary>
+<summary>Laravel（16件）</summary>
 
 | 日付 | 内容 | 参照 |
 |---|---|---|
@@ -152,7 +152,7 @@ learning-lab/
 </details>
 
 <details>
-<summary>Next.js（7件）</summary>
+<summary>Next.js（9件）</summary>
 
 | 日付 | 内容 | 参照 |
 |---|---|---|
@@ -182,11 +182,13 @@ learning-lab/
 </details>
 
 <details>
-<summary>Playwright（2件）</summary>
+<summary>Playwright（4件）</summary>
 
 | 日付 | 内容 | 参照 |
 |---|---|---|
 | 2026-05-18 | ロケーター優先順位（getByRole > getByLabel > getByTestId > locator） | [メモ](docs/playwright/README.md) |
+| 2026-05-18 | Playwrightの立ち位置：E2E担当・重要シナリオに絞るのがベストプラクティス | [メモ](docs/playwright/README.md) |
 | 2026-05-18 | page.route()でAPIモック・バックエンド依存を切り離す | [メモ](docs/playwright/README.md) |
+| 2026-05-18 | codegen：ブラウザ操作を自動でコードに変換・学習に最適 | [メモ](docs/playwright/README.md) |
 
 </details>
