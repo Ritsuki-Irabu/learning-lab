@@ -79,6 +79,7 @@ learning-lab/
 │   ├── laravel/
 │   ├── nextjs/
 │   ├── playwright/
+│   ├── soft-skills/
 │   ├── testing-tools/
 │   └── ui-patterns/
 ├── scripts/               # 管理スクリプト
@@ -195,5 +196,17 @@ learning-lab/
 | 2026-05-18 | Playwrightの立ち位置：E2E担当・重要シナリオに絞るのがベストプラクティス | [メモ](docs/playwright/README.md) |
 | 2026-05-18 | page.route()でAPIモック・バックエンド依存を切り離す | [メモ](docs/playwright/README.md) |
 | 2026-05-18 | codegen：ブラウザ操作を自動でコードに変換・学習に最適 | [メモ](docs/playwright/README.md) |
+
+</details>
+
+<details>
+<summary>ソフトスキル（4件）</summary>
+
+| 日付 | 内容 | 参照 |
+|---|---|---|
+| 2026-06-07 | PREP×STAR 面談構造 | [メモ](docs/soft-skills/README.md) |
+| 2026-06-07 | 技術の言語化（「何ができる」より「どう感じたか」がセットで伝わる） | [メモ](docs/soft-skills/README.md) |
+| 2026-06-07 | メンタル管理の有効性（緊張しないだけで言葉が出てくる） | [メモ](docs/soft-skills/README.md) |
+| 2026-06-07 | 話し言葉の意識（着飾ると本心から遠のく） | [メモ](docs/soft-skills/README.md) |
 
 </details>
