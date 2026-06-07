@@ -153,7 +153,7 @@ learning-lab/
 </details>
 
 <details>
-<summary>Next.js（13件）</summary>
+<summary>Next.js（18件）</summary>
 
 | 日付 | 内容 | 参照 |
 |---|---|---|
@@ -170,6 +170,11 @@ learning-lab/
 | 2026-05-25 | Edge Runtime の制限（Prismaなどネイティブバインディング不可） | [メモ](docs/nextjs/README.md) |
 | 2026-05-25 | 無限ログインループの根本原因（jwtフォールバック × JWEInvalid） | [メモ](docs/nextjs/README.md) ✅ |
 | 2026-05-25 | 2段構えハイブリッド検証パターン（Edge存在チェック＋Node.js厳密検証） | [メモ](docs/nextjs/README.md) ✅ |
+| 2026-06-07 | ローカルと本番の環境差（TypeScript・Cookie名・速度） | [メモ](docs/nextjs/README.md) |
+| 2026-06-07 | Vercel CI/CDとゼロダウンタイムデプロイ | [メモ](docs/nextjs/README.md) |
+| 2026-06-07 | 環境変数の漏洩リスク分類 | [メモ](docs/nextjs/README.md) |
+| 2026-06-07 | OAuthリダイレクトURI問題（本番URLの個別登録） | [メモ](docs/nextjs/README.md) |
+| 2026-06-07 | Production vs Preview の概念 | [メモ](docs/nextjs/README.md) |
 
 </details>
 
