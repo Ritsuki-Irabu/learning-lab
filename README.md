@@ -167,7 +167,7 @@ learning-lab/
 | 2026-05-13 | POST /api/logs 処理フロー（5ステップ） | [メモ](docs/nextjs/README.md) |
 | 2026-05-13 | Gemini 失敗時の設計判断（ThoughtLog 先行保存） | [メモ](docs/nextjs/README.md) |
 | 2026-05-25 | Auth.js セッション戦略（database vs jwt）の違い | [メモ](docs/nextjs/README.md) |
-| 2026-05-25 | Edge Runtime の制限（Prismaなどネイティブバインディング不可） | [メモ](docs/nextjs/README.md) |
+| 2026-05-25 | Edge Runtime の制限（Prismaなどネイティブバインディング不可） | [メモ](docs/nextjs/README.md) ✅ |
 | 2026-05-25 | 無限ログインループの根本原因（jwtフォールバック × JWEInvalid） | [メモ](docs/nextjs/README.md) ✅ |
 | 2026-05-25 | 2段構えハイブリッド検証パターン（Edge存在チェック＋Node.js厳密検証） | [メモ](docs/nextjs/README.md) ✅ |
 
