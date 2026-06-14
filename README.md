@@ -200,6 +200,16 @@ learning-lab/
 </details>
 
 <details>
+<summary>WSL（2件）</summary>
+
+| 日付 | 内容 | 参照 |
+|---|---|---|
+| 2026-06-14 | WSL と Ubuntu の関係 | [メモ](docs/wsl/README.md) ✅ |
+| 2026-06-14 | `/tmp` と一時ディレクトリの役割 | [メモ](docs/wsl/README.md) ✅ |
+
+</details>
+
+<details>
 <summary>ソフトスキル（4件）</summary>
 
 | 日付 | 内容 | 参照 |
