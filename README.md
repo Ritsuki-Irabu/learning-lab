@@ -200,12 +200,13 @@ learning-lab/
 </details>
 
 <details>
-<summary>WSL（2件）</summary>
+<summary>WSL（3件）</summary>
 
 | 日付 | 内容 | 参照 |
 |---|---|---|
 | 2026-06-14 | WSL と Ubuntu の関係 | [メモ](docs/wsl/README.md) ✅ |
 | 2026-06-14 | `/tmp` と一時ディレクトリの役割 | [メモ](docs/wsl/README.md) ✅ |
+| 2026-06-15 | WSL内にプロジェクトを置く理由（Docker / Laravel Sail） | [メモ](docs/wsl/README.md) ✅ |
 
 </details>
 
