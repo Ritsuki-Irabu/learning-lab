@@ -166,7 +166,7 @@ await newPage.waitForLoadState();
 
 | 日付 | トピック | メモ |
 |---|---|---|
-| 2026-05-18 | ロケーター優先順位 | getByRole > getByLabel > getByTestId > locator の順。壊れにくさと一致 |
+| 2026-05-18 | ロケーター優先順位 | getByRole > getByLabel > getByTestId > locator の順。壊れにくさと一致 ✅ |
 | 2026-05-18 | Playwrightの立ち位置 | E2E担当。遅いため重要シナリオに絞るのがベストプラクティス |
 | 2026-05-18 | page.route() | APIモックでバックエンド依存を切り離しテストを安定化できる |
 | 2026-05-18 | codegen | 手動でブラウザ操作するとPlaywrightコードが自動生成される。学習に最適 |

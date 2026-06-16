@@ -182,7 +182,7 @@ learning-lab/
 | 2026-05-18 | Vitestの位置づけ：ロジック・コンポーネントの単体テスト担当 | [メモ](docs/testing-tools/README.md) |
 | 2026-05-18 | Postmanの位置づけ：HTTPエンドポイントの通信確認担当 | [メモ](docs/testing-tools/README.md) |
 | 2026-05-18 | Playwrightの位置づけ：ブラウザUI操作のE2E担当 | [メモ](docs/testing-tools/README.md) |
-| 2026-05-18 | ツール選択の指針：「何が壊れたときに検知したいか」で選ぶ | [メモ](docs/testing-tools/README.md) |
+| 2026-05-18 | ツール選択の指針：「何が壊れたときに検知したいか」で選ぶ | [メモ](docs/testing-tools/README.md) ✅ |
 | 2026-05-18 | Playwrightのネットワークモック：page.route()でE2Eを安定化 | [メモ](docs/testing-tools/README.md) |
 
 </details>
@@ -192,7 +192,7 @@ learning-lab/
 
 | 日付 | 内容 | 参照 |
 |---|---|---|
-| 2026-05-18 | ロケーター優先順位（getByRole > getByLabel > getByTestId > locator） | [メモ](docs/playwright/README.md) |
+| 2026-05-18 | ロケーター優先順位（getByRole > getByLabel > getByTestId > locator） | [メモ](docs/playwright/README.md) ✅ |
 | 2026-05-18 | Playwrightの立ち位置：E2E担当・重要シナリオに絞るのがベストプラクティス | [メモ](docs/playwright/README.md) |
 | 2026-05-18 | page.route()でAPIモック・バックエンド依存を切り離す | [メモ](docs/playwright/README.md) |
 | 2026-05-18 | codegen：ブラウザ操作を自動でコードに変換・学習に最適 | [メモ](docs/playwright/README.md) |
