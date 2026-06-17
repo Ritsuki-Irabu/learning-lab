@@ -409,3 +409,4 @@ config/
 | 2026-05-16 | email:filter バリデーション強化 | Laravel の email ルールは RFC 準拠が緩い。email:filter を使うと PHP の FILTER_VALIDATE_EMAIL（実用的な厳格さ）が適用される |
 | 2026-05-16 | GitHubレビュー対応のワークフロー | レビューコメントへの対応は同じブランチへプッシュするだけで自動反映。PR を再作成する必要はない |
 | 2026-05-16 | npm run build の実行場所 | ホストマシン側で実行してビルド済みアセットをコミットする。Docker コンテナ内での実行は不要 |
+| 2026-06-17 | Laravel Sail / Migration / Model / namespace | ウタエル Issue #2 に向けて、Sail は実行入口、Migration はDB設計図、ModelはPHPからDBを扱う入口だと整理。DB設計書の型をLaravelのMigrationメソッドへ翻訳する考え方を学習。詳細は [メモ](2026-06-17-utaeru-db-migration-model.md) |
