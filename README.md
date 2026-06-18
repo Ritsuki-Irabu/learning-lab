@@ -92,7 +92,7 @@ learning-lab/
 ## 学習ログ
 
 <details>
-<summary>Laravel（17件）</summary>
+<summary>Laravel（18件）</summary>
 
 | 日付 | 内容 | 参照 |
 |---|---|---|
@@ -113,6 +113,7 @@ learning-lab/
 | 2026-05-16 | email:filter バリデーション強化 | [メモ](docs/laravel/README.md) ✅ |
 | 2026-05-16 | GitHubレビュー対応ワークフロー・npm run build の実行場所 | [メモ](docs/laravel/README.md) |
 | 2026-06-17 | Laravel Sail / Migration / Model / namespace | [メモ](docs/laravel/2026-06-17-utaeru-db-migration-model.md) ✅ |
+| 2026-06-18 | Laravel構文の直感的な読みやすさ | [メモ](docs/laravel/README.md) |
 
 </details>
 
