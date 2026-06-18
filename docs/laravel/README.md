@@ -435,4 +435,4 @@ config/
 | 2026-05-16 | GitHubレビュー対応のワークフロー | レビューコメントへの対応は同じブランチへプッシュするだけで自動反映。PR を再作成する必要はない |
 | 2026-05-16 | npm run build の実行場所 | ホストマシン側で実行してビルド済みアセットをコミットする。Docker コンテナ内での実行は不要 |
 | 2026-06-17 | Laravel Sail / Migration / Model / namespace | ウタエル Issue #2 に向けて、Sail は実行入口、Migration はDB設計図、ModelはPHPからDBを扱う入口だと整理。DB設計書の型をLaravelのMigrationメソッドへ翻訳する考え方を学習。詳細は [メモ](2026-06-17-utaeru-db-migration-model.md) ✅ |
-| 2026-06-18 | Laravel構文の直感的な読みやすさ | Laravelは Fluent Interface やメソッドチェーンにより、where → orderBy → get のように処理の流れを英文に近い感覚で読める。ただし読みやすさと内部理解は別で、Query Builder・Eloquent・SQL変換の仕組みも確認する |
+| 2026-06-18 | Laravel構文の直感的な読みやすさ | Laravelは Fluent Interface やメソッドチェーンにより、where → orderBy → get のように処理の流れを英文に近い感覚で読める。ただし読みやすさと内部理解は別で、Query Builder・Eloquent・SQL変換の仕組みも確認する ✅ |
