@@ -220,6 +220,40 @@ public function store(StorePostRequest $request)
 }
 ```
 
+### API CRUD の役割分担
+
+LaravelでAPI CRUDを実装するときは、1つのControllerに入力確認・処理・返却形式・権限確認を全部詰め込まず、役割ごとに分けて考える。
+
+| ファイル | 役割 |
+|---|---|
+| Form Request | 入力値が保存・更新してよい内容か検証する |
+| API Resource | APIとして返すJSONの形を整える |
+| Controller | 一覧・詳細・登録・更新・削除の処理を受け持つ |
+| routes/api.php | URLとControllerの処理をつなぐ入口 |
+| Feature Test | CRUDと権限チェックが壊れていないことを確認する |
+
+例：公開曲マスタの `songs` を扱う場合
+
+| 操作 | HTTP | 権限の考え方 |
+|---|---|---|
+| 一覧取得 | `GET /api/songs` | 一般ユーザーも管理者も参照できる |
+| 登録 | `POST /api/songs` | 管理者だけが作成できる |
+| 更新 | `PUT /api/songs/{song}` | 管理者だけが変更できる |
+| 削除 | `DELETE /api/songs/{song}` | 管理者だけが削除できる |
+
+読み取りは広く許可し、作成・更新・削除は管理者に限定する。認証は「誰か」を確認する仕組みで、認可は「その人がその操作をしてよいか」を判断する仕組み。
+
+Form Request の例：
+
+| 項目 | ルール |
+|---|---|
+| `title` | 必須、文字列、255文字まで |
+| `artist` | 必須、文字列、255文字まで |
+| `bpm` | 必須、整数、1〜300 |
+| `spotify_id` | 任意、文字列、100文字まで |
+
+Controllerは処理、Requestは入力確認、Resourceは返す形、Routeは入口、Testは壊れていない確認、と分けるとCRUD全体の見通しがよくなる。
+
 ```php
 // Rule::in()：許可値を動的に設定（ハードコーディング排除）
 use Illuminate\Validation\Rule;
@@ -436,3 +470,4 @@ config/
 | 2026-05-16 | npm run build の実行場所 | ホストマシン側で実行してビルド済みアセットをコミットする。Docker コンテナ内での実行は不要 |
 | 2026-06-17 | Laravel Sail / Migration / Model / namespace | ウタエル Issue #2 に向けて、Sail は実行入口、Migration はDB設計図、ModelはPHPからDBを扱う入口だと整理。DB設計書の型をLaravelのMigrationメソッドへ翻訳する考え方を学習。詳細は [メモ](2026-06-17-utaeru-db-migration-model.md) ✅ |
 | 2026-06-18 | Laravel構文の直感的な読みやすさ | Laravelは Fluent Interface やメソッドチェーンにより、where → orderBy → get のように処理の流れを英文に近い感覚で読める。ただし読みやすさと内部理解は別で、Query Builder・Eloquent・SQL変換の仕組みも確認する ✅ |
+| 2026-06-22 | Laravel API CRUD の役割分担 | API CRUDでは、Controllerに全部詰め込まず、Form Requestが入力確認、API Resourceが返却形式、Controllerが処理、Routeが入口、Feature Testが保証を担当すると整理。読み取りは一般ユーザーにも許可し、作成・更新・削除は管理者に限定するなど、認証と認可を分けて考える |
