@@ -254,6 +254,48 @@ Form Request の例：
 
 Controllerは処理、Requestは入力確認、Resourceは返す形、Routeは入口、Testは壊れていない確認、と分けるとCRUD全体の見通しがよくなる。
 
+### API CRUD 実装時の確認ポイント
+
+Laravel API CRUDでは、ルート・入力確認・レスポンス整形・権限チェック・自動テストをつなげて確認する。
+
+| 要素 | 確認すること |
+|---|---|
+| `routes/api.php` | URLとHTTPメソッドがControllerの正しいメソッドにつながっているか |
+| Form Request | `$request->validated()` で検証済みの値だけを保存しているか |
+| API Resource | DBの値をそのまま返さず、APIとして返すJSONの形を整えているか |
+| Controller | Requestを受け取り、Modelを操作し、Resourceでレスポンスを返しているか |
+| Middleware | `auth:sanctum` でログイン確認、`role:admin` で管理者権限を確認しているか |
+| Feature Test | curlで手動確認した内容を自動で何度も確認できる形にしているか |
+
+`StoreSongRequest` や `SongResource` はルートに直接書くものではなく、Controllerの中で使う部品。ルートは「URLとControllerをつなぐ入口」として考える。
+
+公開曲APIの権限例：
+
+| API | 利用できるユーザー |
+|---|---|
+| `GET /api/songs` | ログイン済みユーザー |
+| `POST /api/songs` | admin |
+| `PUT /api/songs/{song}` | admin |
+| `DELETE /api/songs/{song}` | admin |
+
+確認コマンド：
+
+```bash
+./vendor/bin/sail artisan route:list --path=songs
+./vendor/bin/sail artisan test
+```
+
+実装時のつまずき：
+
+- `routes/api.php` はLaravelプロジェクト直下の `routes/` にあり、`app/routes/api.php` ではない。
+- `Route` を `Rotue` と書くと当然動かない。ルート定義はクラス名のスペルもそのまま影響する。
+- `destroy` を `destory` と書くと、ルートから呼ばれるControllerメソッド名と一致せずAPIの動作に直結する。
+- userロールでadmin専用APIを実行して `User does not have the right roles.` が出るのは、`role:admin` が効いている証拠。
+- JSONレスポンス内の日本語が `\u30c6...` のように見える場合があるが、これは文字化けではなくUnicodeエスケープ。
+- Laravel Pint はスペースや改行などのコードスタイルを整えるが、`destory` のような意味上のスペルミスまでは直してくれない。
+
+手動確認をcurlだけで終わらせずFeature Testに落とすと、同じCRUD・権限チェックを自動で繰り返し確認できる。
+
 ```php
 // Rule::in()：許可値を動的に設定（ハードコーディング排除）
 use Illuminate\Validation\Rule;
@@ -471,3 +513,4 @@ config/
 | 2026-06-17 | Laravel Sail / Migration / Model / namespace | ウタエル Issue #2 に向けて、Sail は実行入口、Migration はDB設計図、ModelはPHPからDBを扱う入口だと整理。DB設計書の型をLaravelのMigrationメソッドへ翻訳する考え方を学習。詳細は [メモ](2026-06-17-utaeru-db-migration-model.md) ✅ |
 | 2026-06-18 | Laravel構文の直感的な読みやすさ | Laravelは Fluent Interface やメソッドチェーンにより、where → orderBy → get のように処理の流れを英文に近い感覚で読める。ただし読みやすさと内部理解は別で、Query Builder・Eloquent・SQL変換の仕組みも確認する ✅ |
 | 2026-06-22 | Laravel API CRUD の役割分担 | API CRUDでは、Controllerに全部詰め込まず、Form Requestが入力確認、API Resourceが返却形式、Controllerが処理、Routeが入口、Feature Testが保証を担当すると整理。読み取りは一般ユーザーにも許可し、作成・更新・削除は管理者に限定するなど、認証と認可を分けて考える |
+| 2026-06-23 | Laravel API CRUD 実装時の確認ポイント | `routes/api.php` はURLとHTTPメソッドをControllerへつなぐ入口で、Form RequestやAPI ResourceはController内で使う部品。`auth:sanctum` と `role:admin` で認証・認可を分け、curlで確認したCRUDと権限チェックをFeature Testに落とすと自動で再確認できる。`Route` / `destroy` などのスペルミスやJSONのUnicodeエスケープも実装時の注意点 |
