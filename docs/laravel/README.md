@@ -548,4 +548,4 @@ config/
 | 2026-06-23 | Laravel API CRUD 実装時の確認ポイント | `routes/api.php` はURLとHTTPメソッドをControllerへつなぐ入口で、Form RequestやAPI ResourceはController内で使う部品。`auth:sanctum` と `role:admin` で認証・認可を分け、curlで確認したCRUDと権限チェックをFeature Testに落とすと自動で再確認できる。`Route` / `destroy` などのスペルミスやJSONのUnicodeエスケープも実装時の注意点 ✅ |
 | 2026-07-01 | Middleware | MiddlewareはController前後に挟まる共通処理層。認証・認可・CSRF・レート制限などを複数Route/Controllerへ共通適用できる。 |
 | 2026-07-02 | Homestead / vendor | HomesteadはLaravel公式のVagrant box。`vendor/` はComposerが入れた外部ライブラリの実体で、基本はGitに入れず `composer install` で復元する。 ✅ |
-| 2026-07-03 | MVC と CRUD | MVCは設計思想、CRUDはデータ操作の基本4種類。対立ではなく、MVCの中でCRUD処理を実装する関係にある。 |
+| 2026-07-03 | MVC と CRUD | MVCは設計思想、CRUDはデータ操作の基本4種類。対立ではなく、MVCの中でCRUD処理を実装する関係にある。 ✅ |

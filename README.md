@@ -122,7 +122,7 @@ learning-lab/
 | 2026-06-23 | Laravel API CRUD 実装時の確認ポイント | [メモ](docs/laravel/README.md) ✅ |
 | 2026-07-01 | Middleware の役割 | [メモ](docs/laravel/README.md) |
 | 2026-07-02 | Homestead と vendor ディレクトリ | [メモ](docs/laravel/README.md) ✅ |
-| 2026-07-03 | MVC と CRUD の違い | [メモ](docs/laravel/README.md) |
+| 2026-07-03 | MVC と CRUD の違い | [メモ](docs/laravel/README.md) ✅ |
 
 </details>
 
@@ -133,7 +133,7 @@ learning-lab/
 |---|---|---|
 | 2026-07-02 | Vagrant / VirtualBox / Homestead の関係 | [メモ](docs/virtualization/README.md) ✅ |
 | 2026-07-03 | VirtualBox / WSL2 / Docker の違い | [メモ](docs/virtualization/README.md) |
-| 2026-07-04 | Vagrant 基本コマンド | [メモ](docs/virtualization/README.md) |
+| 2026-07-04 | Vagrant 基本コマンド | [メモ](docs/virtualization/README.md) ✅ |
 
 </details>
 

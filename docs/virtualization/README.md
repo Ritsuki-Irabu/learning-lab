@@ -128,7 +128,7 @@ homestead-projects
 |---|---|---|
 | 2026-07-02 | Vagrant / Homestead | Vagrantは仮想マシンを作成・管理する道具で、VirtualBoxは仮想マシンを動かす土台。HomesteadはLaravel公式のVagrant boxだが、現在はlegacy扱いのためSail/Dockerも候補にする。 ✅ |
 | 2026-07-03 | VirtualBox / WSL2 / Docker | VirtualBoxは仮想マシン、WSL2はWindows上のLinux実行環境、Dockerはコンテナ。環境・規模・再現性・分離度によって使い分ける。 |
-| 2026-07-04 | Vagrant基本コマンド | `vagrant up` で起動、`vagrant ssh` でログイン、`vagrant halt` で停止する。 |
+| 2026-07-04 | Vagrant基本コマンド | `vagrant up` で起動、`vagrant ssh` でログイン、`vagrant halt` で停止する。 ✅ |
 
 ---
 
