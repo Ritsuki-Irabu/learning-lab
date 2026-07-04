@@ -88,6 +88,28 @@ Route::prefix('api')->group(function () {
 });
 ```
 
+### Middleware
+
+Middleware は、HTTPリクエストがControllerに到達する前後に処理を差し込む層。認証、認可、CSRF、レート制限、ログなど、複数のControllerやRouteで共通化したい規則を切り出せる。
+
+```php
+Route::get('/profile', [ProfileController::class, 'show'])
+    ->middleware(['auth', 'verified']);
+```
+
+Controllerに同じ条件分岐を重複させず、Route単位・Route group単位・Global middlewareとして適用する。細かい権限判定はPolicy / Gateと組み合わせると責務が分かれやすい。
+
+### MVC と CRUD
+
+MVC はアプリケーションを `Model`、`View`、`Controller` に分ける設計思想。CRUD は `Create`、`Read`、`Update`、`Delete` というデータ操作の基本パターン。
+
+| 観点 | 意味 |
+|---|---|
+| MVC | アプリをどう分けて設計するか |
+| CRUD | データに何をするか |
+
+両者は対立ではなく、MVC の中で CRUD 処理を実装する関係。たとえば記事作成では、Viewがフォームを表示し、Controllerがリクエストを受け取り、Modelが保存に関わる。
+
 ### Bladeレイアウト・コンポーネント
 
 ```blade
@@ -168,6 +190,16 @@ public function assignedUser(): BelongsTo
 // 利用側
 $task->assignedUser->name ?? '未設定'
 ```
+
+### vendor ディレクトリ
+
+`vendor/` は Composer がインストールした外部ライブラリの実体が入るディレクトリ。Laravel本体、Eloquent、ルーティング、認証、ログ、テスト関連など多くの機能が依存パッケージとして管理される。
+
+```bash
+composer install
+```
+
+通常 `vendor/` はGitにコミットしない。`composer.json` と `composer.lock` をコミットし、別環境では `composer install` で同じ依存関係を復元する。
 
 ```php
 // $casts：DB値を自動的に型変換（型不一致バグを防止）
@@ -514,3 +546,6 @@ config/
 | 2026-06-18 | Laravel構文の直感的な読みやすさ | Laravelは Fluent Interface やメソッドチェーンにより、where → orderBy → get のように処理の流れを英文に近い感覚で読める。ただし読みやすさと内部理解は別で、Query Builder・Eloquent・SQL変換の仕組みも確認する ✅ |
 | 2026-06-22 | Laravel API CRUD の役割分担 | API CRUDでは、Controllerに全部詰め込まず、Form Requestが入力確認、API Resourceが返却形式、Controllerが処理、Routeが入口、Feature Testが保証を担当すると整理。読み取りは一般ユーザーにも許可し、作成・更新・削除は管理者に限定するなど、認証と認可を分けて考える ✅ |
 | 2026-06-23 | Laravel API CRUD 実装時の確認ポイント | `routes/api.php` はURLとHTTPメソッドをControllerへつなぐ入口で、Form RequestやAPI ResourceはController内で使う部品。`auth:sanctum` と `role:admin` で認証・認可を分け、curlで確認したCRUDと権限チェックをFeature Testに落とすと自動で再確認できる。`Route` / `destroy` などのスペルミスやJSONのUnicodeエスケープも実装時の注意点 ✅ |
+| 2026-07-01 | Middleware | MiddlewareはController前後に挟まる共通処理層。認証・認可・CSRF・レート制限などを複数Route/Controllerへ共通適用できる。 |
+| 2026-07-02 | Homestead / vendor | HomesteadはLaravel公式のVagrant box。`vendor/` はComposerが入れた外部ライブラリの実体で、基本はGitに入れず `composer install` で復元する。 ✅ |
+| 2026-07-03 | MVC と CRUD | MVCは設計思想、CRUDはデータ操作の基本4種類。対立ではなく、MVCの中でCRUD処理を実装する関係にある。 |

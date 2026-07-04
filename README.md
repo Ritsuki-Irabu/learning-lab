@@ -80,8 +80,12 @@ learning-lab/
 │   ├── nextjs/
 │   ├── playwright/
 │   ├── soft-skills/
+│   ├── terminal/
 │   ├── testing-tools/
-│   └── ui-patterns/
+│   ├── ui-patterns/
+│   ├── virtualization/
+│   ├── web/
+│   └── wsl/
 ├── scripts/               # 管理スクリプト
 ├── CLAUDE.md
 └── README.md
@@ -92,7 +96,7 @@ learning-lab/
 ## 学習ログ
 
 <details>
-<summary>Laravel（20件）</summary>
+<summary>Laravel（23件）</summary>
 
 | 日付 | 内容 | 参照 |
 |---|---|---|
@@ -116,6 +120,39 @@ learning-lab/
 | 2026-06-18 | Laravel構文の直感的な読みやすさ | [メモ](docs/laravel/README.md) ✅ |
 | 2026-06-22 | Laravel API CRUD の役割分担 | [メモ](docs/laravel/README.md) ✅ |
 | 2026-06-23 | Laravel API CRUD 実装時の確認ポイント | [メモ](docs/laravel/README.md) ✅ |
+| 2026-07-01 | Middleware の役割 | [メモ](docs/laravel/README.md) |
+| 2026-07-02 | Homestead と vendor ディレクトリ | [メモ](docs/laravel/README.md) ✅ |
+| 2026-07-03 | MVC と CRUD の違い | [メモ](docs/laravel/README.md) |
+
+</details>
+
+<details>
+<summary>Virtualization（3件）</summary>
+
+| 日付 | 内容 | 参照 |
+|---|---|---|
+| 2026-07-02 | Vagrant / VirtualBox / Homestead の関係 | [メモ](docs/virtualization/README.md) ✅ |
+| 2026-07-03 | VirtualBox / WSL2 / Docker の違い | [メモ](docs/virtualization/README.md) |
+| 2026-07-04 | Vagrant 基本コマンド | [メモ](docs/virtualization/README.md) |
+
+</details>
+
+<details>
+<summary>Terminal（2件）</summary>
+
+| 日付 | 内容 | 参照 |
+|---|---|---|
+| 2026-07-02 | Git Bash / Vim / Tab補完 | [メモ](docs/terminal/README.md) |
+| 2026-07-04 | Vim と ls -la | [メモ](docs/terminal/README.md) |
+
+</details>
+
+<details>
+<summary>Web基礎（1件）</summary>
+
+| 日付 | 内容 | 参照 |
+|---|---|---|
+| 2026-07-01 | robots.txt の役割と注意点 | [メモ](docs/web/README.md) |
 
 </details>
 
