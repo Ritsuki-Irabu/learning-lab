@@ -96,7 +96,7 @@ learning-lab/
 ## 学習ログ
 
 <details>
-<summary>Laravel（23件）</summary>
+<summary>Laravel（26件）</summary>
 
 | 日付 | 内容 | 参照 |
 |---|---|---|
@@ -123,6 +123,9 @@ learning-lab/
 | 2026-07-01 | Middleware の役割 | [メモ](docs/laravel/README.md) |
 | 2026-07-02 | Homestead と vendor ディレクトリ | [メモ](docs/laravel/README.md) ✅ |
 | 2026-07-03 | MVC と CRUD の違い | [メモ](docs/laravel/README.md) ✅ |
+| 2026-07-07 | 404 / 500 エラーの切り分け | [メモ](docs/laravel/README.md) |
+| 2026-07-07 | 親ファイルと子ファイルの責務 | [メモ](docs/laravel/README.md) |
+| 2026-07-07 | Bladeディレクティブ | [メモ](docs/laravel/README.md) |
 
 </details>
 
