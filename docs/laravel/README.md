@@ -455,11 +455,38 @@ Log::error('エラー発生', ['message' => $e->getMessage()]);
 ### Artisan
 
 ```bash
+php artisan list                    # Artisan コマンド一覧
 php artisan make:model Post -mcr   # Model + Migration + Controller(resource)
 php artisan migrate:fresh --seed   # DBリセット＋シード
 php artisan tinker                  # REPL
 php artisan route:list              # ルート一覧確認
 ```
+
+`php artisan list` は、Laravelプロジェクトで使える Artisan コマンドの一覧を表示する。`make:*`、`migrate:*`、`route:*`、`cache:*` など、今のプロジェクトで実行できるコマンドを確認したいときに使う。
+
+Artisan や関連コマンドでファイル生成・公開処理を行うと、結果として `CREATED`、`EXIST`、`SKIP` のような表示が出ることがある。
+
+| 表示 | 意味 | 見方 |
+|---|---|---|
+| `CREATED` | 新規作成が完了した | 対象ファイルがまだ存在せず、今回のコマンドで作られた |
+| `EXIST` | すでに存在している | 同名ファイルや対象リソースがすでにあるため、新規作成ではない |
+| `SKIP` | 作成・変更対象から外された | コードやDB状態、既存ファイル、コマンド側の条件により処理されなかった |
+
+`EXIST` は「すでにある」、`SKIP` は「今回は処理対象ではない」、`CREATED` は「新しく作られた」と分けると読みやすい。特に `vendor:publish` や `make:*` 系では、表示を見て「何が実際に作られたか」を確認する。
+
+### LaravelAdmin
+
+LaravelAdmin（`encore/laravel-admin`）は、Laravel向けの管理画面ビルダー。管理画面に特化しており、少ないコードでCRUDバックエンドを素早く作れる。
+
+```bash
+composer require encore/laravel-admin
+php artisan vendor:publish --provider="Encore\Admin\AdminServiceProvider"
+php artisan admin:install
+```
+
+モデルの一覧、フォーム、詳細表示などを管理画面として組み立てやすく、カスタマイズ性も高い。そのため、管理画面以外の業務アプリ風UIを作ることもできる。
+
+ただし、2026-07-08時点で GitHub の最新リリースは `v1.8.19`（2022-05-24）で、数年間大きな更新が止まっている。対外公開するアプリに使う場合は、Laravel本体・PHPバージョン・依存ライブラリ・既知脆弱性・認証認可の安全性を作成者側で確認し、セキュリティを担保する必要がある。
 
 ### Git操作（開発フロー）
 
@@ -593,3 +620,6 @@ config/
 | 2026-07-07 | 404 / 500 エラー | 404はURLやルートが見つからない状態、500はURL到達後にプログラム内部で処理が落ちた状態。404はルート定義・キャッシュ、500はログやデバッグ情報から原因を追う。 |
 | 2026-07-07 | 親ファイルと子ファイルの責務 | 親ファイルは共通の土台やルールをまとめ、子ファイルは親を継承して自分だけの差分を実装する。 |
 | 2026-07-07 | Bladeディレクティブ | `@if` や `@foreach` などを使うと、HTML内に条件分岐や繰り返しを短く書ける。PHPタグを直接書くより見通しがよく、必要最低限のコード量にできる。 |
+| 2026-07-08 | Artisan コマンド一覧 | `php artisan list` で、現在のLaravelプロジェクトで使えるArtisanコマンド一覧を確認できる。 |
+| 2026-07-08 | コマンド生成時の表示 | `CREATED` は新規作成、`EXIST` は既存、`SKIP` は条件により作成・変更対象外。表示を見て実際に何が作られたか確認する。 |
+| 2026-07-08 | LaravelAdmin | LaravelAdminは管理画面CRUDを高速に作れる便利なツールだが、数年間更新が止まっているため、公開アプリでは保守状況・依存関係・脆弱性を作成者側で確認する。 |

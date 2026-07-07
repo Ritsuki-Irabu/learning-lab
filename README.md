@@ -96,7 +96,7 @@ learning-lab/
 ## 学習ログ
 
 <details>
-<summary>Laravel（26件）</summary>
+<summary>Laravel（29件）</summary>
 
 | 日付 | 内容 | 参照 |
 |---|---|---|
@@ -126,6 +126,9 @@ learning-lab/
 | 2026-07-07 | 404 / 500 エラーの切り分け | [メモ](docs/laravel/README.md) |
 | 2026-07-07 | 親ファイルと子ファイルの責務 | [メモ](docs/laravel/README.md) |
 | 2026-07-07 | Bladeディレクティブ | [メモ](docs/laravel/README.md) |
+| 2026-07-08 | Artisan コマンド一覧 | [メモ](docs/laravel/README.md) |
+| 2026-07-08 | コマンド生成時の表示 | [メモ](docs/laravel/README.md) |
+| 2026-07-08 | LaravelAdmin | [メモ](docs/laravel/README.md) |
 
 </details>
 
