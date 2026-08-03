@@ -709,7 +709,7 @@ config/
 | 2026-07-16 | Migration rollback | `php artisan migrate:rollback` は直前のMigrationを取り消す処理。ファイル作成、Migration実行、ミス発見、rollbackという流れでDB変更を戻せるが、実データへの影響確認が必要。 |
 | 2026-07-17 | Migration と Seeder の違い | MigrationはDBの構造を作る・変更する仕組み、Seederは初期データや検証用データを投入する仕組み。箱を作る処理と箱にデータを入れる処理を分けて考える。 |
 | 2026-07-19 | Seeder と Eloquent の違い | SeederはDBへ初期データを追加する実行処理、EloquentはアプリケーションからDBデータを扱うORM。データ投入のための仕組みと、日常的にデータ操作する入口は別。 |
-| 2026-07-22 | Query Builder と Eloquent | Query Builderは `DB::table()` でテーブルを直接指定してSQLをPHPで組み立てる。EloquentはModelを入口にしてDBを操作する。どちらも `where()` などを使えるが、Modelの有無と返るデータの扱いが違う。 |
+| 2026-07-22 | Query Builder と Eloquent | Query Builderは `DB::table()` でテーブルを直接指定してSQLをPHPで組み立てる。EloquentはModelを入口にしてDBを操作する。どちらも `where()` などを使えるが、Modelの有無と返るデータの扱いが違う。 ✅ |
 | 2026-07-23 | where の引数とDB操作 | `where($column, $value)` の1つ目は探す場所、2つ目は比較する値。`where('status', 1)` はSQLの `WHERE status = 1` に近い意味で、Query BuilderでもEloquentでも使える。 |
 | 2026-07-27 | DBファサードとstdClass | DBファサードは `DB::table()` などでDB操作へアクセスする入口。Query Builderで取得した1行分のデータは、メソッドを持たないシンプルな `stdClass` として扱われる。 |
 | 2026-07-29 | Collection クラス | Collectionは複数データを扱いやすくするLaravelのラッパー。検索・変換・集計などのメソッドを使える。Query Builderの結果はCollectionの中にstdClass、Eloquentの結果はCollectionの中にModelが入る。 |

@@ -133,7 +133,7 @@ learning-lab/
 | 2026-07-16 | Migration rollback | [メモ](docs/laravel/README.md) |
 | 2026-07-17 | Migration と Seeder の違い | [メモ](docs/laravel/README.md) |
 | 2026-07-19 | Seeder と Eloquent の違い | [メモ](docs/laravel/README.md) |
-| 2026-07-22 | Query Builder と Eloquent | [メモ](docs/laravel/README.md) |
+| 2026-07-22 | Query Builder と Eloquent | [メモ](docs/laravel/README.md) ✅ |
 | 2026-07-23 | where の引数とDB操作 | [メモ](docs/laravel/README.md) |
 | 2026-07-27 | DBファサードとstdClass | [メモ](docs/laravel/README.md) |
 | 2026-07-29 | Collection クラス | [メモ](docs/laravel/README.md) |
