@@ -68,6 +68,88 @@ return $this->hasMany(Task::class);
 
 ---
 
+## Laravel DB操作・Eloquent周辺の整理
+
+### Eloquent と Model
+
+Eloquent は Laravel 標準の ORM（Object Relational Mapper）。SQLを直接書くだけではなく、PHPのクラスを通してDBテーブルを扱うための仕組み。
+
+基本的には、DBテーブルごとに対応するModelクラスを作る。
+
+```text
+app/Models/
+├── User.php  -> users テーブルを扱うModel
+└── Post.php  -> posts テーブルを扱うModel
+```
+
+Modelは「テーブル専用の入口」と考えると理解しやすい。`User::where(...)` のように書けるのは、`User` Modelが `users` テーブルに対応しているため。
+
+### Migration / Seeder / Eloquent
+
+| 仕組み | 役割 | 主な使いどころ |
+|---|---|---|
+| Migration | DB構造を作る・変更する | テーブル作成、カラム追加、rollback |
+| Seeder | 初期データ・検証用データを投入する | マスタデータ、開発用データ |
+| Eloquent | アプリケーションからDBのデータを扱う | 取得、登録、更新、削除、リレーション |
+
+Migrationは「箱の形」を作り、Seederは「箱に初期データを入れる」。Eloquentは、アプリケーションの処理からその箱の中身を扱う入口。
+
+```bash
+php artisan migrate
+php artisan migrate:rollback
+php artisan db:seed
+```
+
+`migrate:rollback` は直前のMigrationを取り消す処理。ミスを見つけたときにDB変更を戻せるが、実データが入った環境では影響範囲を確認してから実行する。
+
+### Query Builder と Eloquent
+
+Query Builder は、SQLをPHPのメソッドチェーンで組み立てる仕組み。Modelを作らなくても `DB::table('users')` のようにテーブル名を直接指定して操作できる。
+
+```php
+$users = DB::table('users')
+    ->where('status', 1)
+    ->get();
+```
+
+Eloquent は、Modelクラスを入口にしてDBを操作する仕組み。
+
+```php
+$users = User::where('status', 1)->get();
+```
+
+どちらも `where()` や `get()` のようなメソッドを使えるが、返ってくるデータの扱いが違う。Query Builder は基本的に `stdClass` の集合を返し、Eloquent はModelインスタンスの集合を返す。
+
+### where の引数
+
+```php
+User::where('status', 1)->get();
+```
+
+`where($column, $value)` のように書く場合、1つ目の引数は「探す場所」、2つ目の引数は「比較する値」。
+
+```text
+status が 1 の user を取得する
+```
+
+SQLの `WHERE status = 1` に近い意味になる。
+
+### DBファサード / stdClass / Collection
+
+| 用語 | 意味 |
+|---|---|
+| DBファサード | LaravelでDB操作機能へアクセスする入口。`DB::table()` のようにQuery Builderを使える |
+| stdClass | PHP標準のシンプルなオブジェクト。Query Builderで取得した1行分のデータなどで使われる |
+| Collection | 複数データを扱いやすくするLaravelのラッパー。検索・変換・集計などのメソッドを使える |
+
+```php
+$users = DB::table('users')->get(); // Collection<stdClass>
+```
+
+この場合、`$users` 全体はCollectionで、その中の1件1件は `stdClass`。Eloquentで取得した場合は、Collectionの中身が `User` Modelになる。
+
+---
+
 ## チートシート
 
 ### ルーティング
@@ -623,3 +705,11 @@ config/
 | 2026-07-08 | Artisan コマンド一覧 | `php artisan list` で、現在のLaravelプロジェクトで使えるArtisanコマンド一覧を確認できる。 ✅ |
 | 2026-07-08 | コマンド生成時の表示 | `CREATED` は新規作成、`EXIST` は既存、`SKIP` は条件により作成・変更対象外。表示を見て実際に何が作られたか確認する。 ✅ |
 | 2026-07-08 | LaravelAdmin | LaravelAdminは管理画面CRUDを高速に作れる便利なツールだが、数年間更新が止まっているため、公開アプリでは保守状況・依存関係・脆弱性を作成者側で確認する。 ✅ |
+| 2026-07-15 | Eloquent と Model の対応 | EloquentはLaravel標準のORM。DBテーブルごとに対応するModelを作り、`User` Modelは `users` テーブル、`Post` Modelは `posts` テーブルを扱う入口になる。 |
+| 2026-07-16 | Migration rollback | `php artisan migrate:rollback` は直前のMigrationを取り消す処理。ファイル作成、Migration実行、ミス発見、rollbackという流れでDB変更を戻せるが、実データへの影響確認が必要。 |
+| 2026-07-17 | Migration と Seeder の違い | MigrationはDBの構造を作る・変更する仕組み、Seederは初期データや検証用データを投入する仕組み。箱を作る処理と箱にデータを入れる処理を分けて考える。 |
+| 2026-07-19 | Seeder と Eloquent の違い | SeederはDBへ初期データを追加する実行処理、EloquentはアプリケーションからDBデータを扱うORM。データ投入のための仕組みと、日常的にデータ操作する入口は別。 |
+| 2026-07-22 | Query Builder と Eloquent | Query Builderは `DB::table()` でテーブルを直接指定してSQLをPHPで組み立てる。EloquentはModelを入口にしてDBを操作する。どちらも `where()` などを使えるが、Modelの有無と返るデータの扱いが違う。 |
+| 2026-07-23 | where の引数とDB操作 | `where($column, $value)` の1つ目は探す場所、2つ目は比較する値。`where('status', 1)` はSQLの `WHERE status = 1` に近い意味で、Query BuilderでもEloquentでも使える。 |
+| 2026-07-27 | DBファサードとstdClass | DBファサードは `DB::table()` などでDB操作へアクセスする入口。Query Builderで取得した1行分のデータは、メソッドを持たないシンプルな `stdClass` として扱われる。 |
+| 2026-07-29 | Collection クラス | Collectionは複数データを扱いやすくするLaravelのラッパー。検索・変換・集計などのメソッドを使える。Query Builderの結果はCollectionの中にstdClass、Eloquentの結果はCollectionの中にModelが入る。 |

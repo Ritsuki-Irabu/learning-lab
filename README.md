@@ -96,7 +96,7 @@ learning-lab/
 ## 学習ログ
 
 <details>
-<summary>Laravel（29件）</summary>
+<summary>Laravel（37件）</summary>
 
 | 日付 | 内容 | 参照 |
 |---|---|---|
@@ -129,6 +129,14 @@ learning-lab/
 | 2026-07-08 | Artisan コマンド一覧 | [メモ](docs/laravel/README.md) ✅ |
 | 2026-07-08 | コマンド生成時の表示 | [メモ](docs/laravel/README.md) ✅ |
 | 2026-07-08 | LaravelAdmin | [メモ](docs/laravel/README.md) ✅ |
+| 2026-07-15 | Eloquent と Model の対応 | [メモ](docs/laravel/README.md) |
+| 2026-07-16 | Migration rollback | [メモ](docs/laravel/README.md) |
+| 2026-07-17 | Migration と Seeder の違い | [メモ](docs/laravel/README.md) |
+| 2026-07-19 | Seeder と Eloquent の違い | [メモ](docs/laravel/README.md) |
+| 2026-07-22 | Query Builder と Eloquent | [メモ](docs/laravel/README.md) |
+| 2026-07-23 | where の引数とDB操作 | [メモ](docs/laravel/README.md) |
+| 2026-07-27 | DBファサードとstdClass | [メモ](docs/laravel/README.md) |
+| 2026-07-29 | Collection クラス | [メモ](docs/laravel/README.md) |
 
 </details>
 
@@ -231,8 +239,8 @@ learning-lab/
 | 2026-05-18 | Playwrightの位置づけ：ブラウザUI操作のE2E担当 | [メモ](docs/testing-tools/README.md) |
 | 2026-05-18 | ツール選択の指針：「何が壊れたときに検知したいか」で選ぶ | [メモ](docs/testing-tools/README.md) ✅ |
 | 2026-05-18 | Playwrightのネットワークモック：page.route()でE2Eを安定化 | [メモ](docs/testing-tools/README.md) |
-| 2026-08-04 | テスト仕様書作成 | [メモ](docs/testing-tools/README.md) |
-| 2026-08-04 | 結合テスト設計 | [メモ](docs/testing-tools/README.md) |
+| 2026-07-29 | テスト仕様書作成 | [メモ](docs/testing-tools/README.md) |
+| 2026-07-30 | 結合テスト設計 | [メモ](docs/testing-tools/README.md) |
 
 </details>
 
