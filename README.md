@@ -229,7 +229,7 @@ learning-lab/
 </details>
 
 <details>
-<summary>テストツール（8件）</summary>
+<summary>テストツール（9件）</summary>
 
 | 日付 | 内容 | 参照 |
 |---|---|---|
@@ -241,6 +241,7 @@ learning-lab/
 | 2026-05-18 | Playwrightのネットワークモック：page.route()でE2Eを安定化 | [メモ](docs/testing-tools/README.md) |
 | 2026-07-29 | テスト仕様書作成 | [メモ](docs/testing-tools/README.md) |
 | 2026-07-30 | 結合テスト設計 | [メモ](docs/testing-tools/README.md) |
+| 2026-08-05 | 結合テストと単体テストの線引き | [メモ](docs/testing-tools/README.md) |
 
 </details>
 
